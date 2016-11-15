@@ -1,4 +1,4 @@
-# Full Science Data Science
+# Full Stack Data Science
 
 > "Jack of all trades, master of none, though oft times better than master of one." 
 
