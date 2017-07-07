@@ -2,6 +2,34 @@
 
 {% block content %}
 
-<h1>Quick Loan - Admin Center</h1>
+<h1>InstaLoan - Admin Center</h1>
 
+<table class="table">
+  <thead>
+    <tr>
+      <th>#</th>
+      <th>When</th>
+      <th>Name</th>
+      <th>Amount</th>
+      <th>Duration</th>
+      <th>Age</th>
+      <th>Income</th>
+      <th>Ownership</th>
+    </tr>
+  </thead>
+  <tbody>
+    {% for loan in loans %}
+      <tr>
+        <td>{{loop.index}}</td>
+        <td>{{loan.timestamp}}</td>
+        <td>{{loan.name}}</td>
+        <td>{{loan.amount}}</td>
+        <td>{{loan.duration}}</td>
+        <td>{{loan.age}}</td>
+        <td>{{loan.income}}</td>
+        <td>{{loan.ownership}}</td>
+      </tr>
+    {% endfor %}
+  </tbody>
+</table>
 {% endblock %}

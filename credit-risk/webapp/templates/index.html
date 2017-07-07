@@ -2,6 +2,30 @@
 
 {% block content %}
 
-<h1>Welcome</h1>
+<h1>InstaLoan</h1>
+
+<div class="row">
+<div class="col-md-6">
+<form method="POST" class="form">
+  {{ form.csrf_token }}
+  {{ render_input(form.amount) }}
+  {{ render_input(form.duration) }}
+  {{ render_input(form.name) }}
+  {{ render_input(form.email) }}
+  {{ render_input(form.age) }}
+  {{ render_input(form.income) }}
+  {{ render_input(form.ownership) }}
+
+  <button type="submit" class="btn btn-primary">Apply</button>
+</form>
+</div>
+</div>
 
 {% endblock %}
+
+{% macro render_input(input) %}
+  <div class="form-group">
+    {{input.label}}
+    {{input(class_="form-control")}}
+  </div>
+{% endmacro %}
