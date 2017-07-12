@@ -45,7 +45,18 @@ An advanced version of the workshop, taught over two days, will cover the follow
   - `scikit-learn`: For building machine learning models
 
 ## Software Requirements
-We will be using Python data stack for the workshop. Please install Ananconda for Python 3.5 for the workshop. Additional requirement will be communicated to participants.
+
+We will be using Python data stack for the workshop. Please install [Ananconda for Python 3.5 or 3.6][anaconda] for the workshop. Additional requirement will be communicated to participants.
+
+Install the required packages using conda.
+
+	conda install numpy pandas matplotlib seaborn scikit-learn pydotplus flask flask-wtf
+
+We'll also need a python library firefly-python that is not available as conda package. Install it using pip.
+
+	pip install firefly-python
+
+[anaconda]: https://www.continuum.io/downloads
 
 ## Facilitators’ Profile
 Anand Chitipothu is a software consultant and trainer based in Visakhapatnam. He has over 13 years of experience in architecting and developing variety of software applications. He is co-author of `web.py`, a micro web framework in Python. He has worked at Strand Life Sciences and Internet Archive. You can tweet him at [@anandology](https://twitter.com/anandology)

@@ -1,0 +1,8 @@
+pydotplus
+seaborn
+matplotlib
+numpy
+pandas
+firefly-python
+Flask
+Flask-WTF
