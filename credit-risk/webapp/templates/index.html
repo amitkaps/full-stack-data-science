@@ -27,5 +27,13 @@
   <div class="form-group">
     {{input.label}}
     {{input(class_="form-control")}}
+
+    {% if input.errors %}
+      <ul class="help-block list-unstyled alert alert-danger">
+        {% for error in input.errors %}
+          <li>{{ error }}</li>
+        {% endfor %}
+      </ul>
+    {% endif %}
   </div>
 {% endmacro %}
