@@ -133,7 +133,7 @@ What are the **type of questions** you can ask?
 
 ---
 
-# **Machine Learning Approach**
+# **ML as a Service (MLaaS) Approach**
 ```
 FRAME  ——← ACQUIRE  ——← REFINE ——←  
                                   \
@@ -147,8 +147,22 @@ INTERACT →——  BUILD →—— DEPLOY →——
 
 ```
 
+---
 
---- 
+
+# **MLaaS Approach**
+
+- *Frame*: Problem definition
+- *Acquire*: Data ingestion 
+- *Refine*: Data wrangling
+- *Transform*: Feature creation 
+- *Explore*: Feature selection 
+- *Model*: Model creation & selection
+- *Deploy*: Model deployment
+- *Build*: Application building
+- *Interact*: User interaction
+
+---
 
 # **ML Theory: Data Types**
 
@@ -198,13 +212,13 @@ INTERACT →——  BUILD →—— DEPLOY →——
 # **Historical Data**
 
 ```
- age   income   years  ownership 	 grade   amount
- ---   -------  -----  ---------  ------- -------
- 31	    12252    25.0      RENT      C      2400
- 24	    49200    13.0      RENT      C     10000
- 28	    75000    11.0       OWN      B     12000
- 27    110000    13.0  MORTGAGE      A      3600
- 33	    24000    10.0      RENT      B      5000
+default	   amount	  grade	 years	  ownership	    income	   age
+-------   -------    ------   ------    ---------   --------     ---
+    0	    1,000	     B	     2.00	     RENT	   19,200	   24
+    1	    6,500	     A	     2.00	 MORTGAGE	   66,000	   28
+    0	    2,400	     A	     2.00	     RENT	   60,000	   36
+    0	   10,000	     C	     3.00	     RENT	   62,000	   24
+    1	    4,000	     C	     2.00	     RENT	   20,000	   28
 
 ```
 
@@ -243,73 +257,6 @@ Learning Paradigm: **Supervised**
 
 - If $$y$$ is *continuous* - **Regression**
 - If $$y$$ is *categorical* - **Classification**
-
----
-
-# **ML Theory: Formulation**
-- **Features** $$\mathbf{x}$$ *(customer application)*
-- **Target** $$y$$ *(loan amount)*
-- **Target Function** $$\mathcal{f}: \mathcal{X} \to \mathcal{y}$$ (ideal formula)
-- **Data** $$ (\mathbf{x}_{1}, y_{1}), (\mathbf{x}_{2}, y_{2}) ... (\mathbf{x}_{n}, y_{n}) $$ *(historical records)*
-- **Final Hypothesis** $$\mathcal{g}: \mathcal{X} \to \mathcal{y}$$ (formula to use)
-- **Hypothesis Set** $$ \mathcal{H} $$ (all possible formulas)
-- **Learning Algorithm** $$\mathcal{A}$$ (how to learn the formula)
-
-
----
-
-# **ML Theory: Formulation**
-
-$$\text{unknown target function}$$
-$$\mathcal{f}: \mathcal{X} \to \mathcal{y}$$     
-$$ | $$
-$$\text{training data}$$
-$$ (\mathbf{x}_{1}, y_{1}), (\mathbf{x}_{2}, y_{2}) ... (\mathbf{x}_{n}, y_{n}) $$    
-$$ | $$
-$$\text{hypothesis set} \quad \rightarrow \quad \text{learning algorithm} \qquad \qquad \qquad \qquad $$
-$$ \mathcal{H} \qquad  \qquad \qquad \qquad \qquad \mathcal{A} \qquad \qquad \qquad \qquad \qquad $$
-$$ | $$
-$$\text{final hypothesis}$$
-$$\mathcal{g} \to \mathcal{f}$$
-
----
-
-# **ML Theory:  Learning Model**
-
-The Learning Model is composed of the two elements
-
-- The Hypothesis Set:  $$ \mathcal{H} = \{\mathcal{h}\} \qquad \mathcal{g} \in \mathcal{H} $$
-- Learning Algorithm: $$ \mathcal{A} $$ 
-
----
-
-# **ML Theory: Formulation (Simplified)**
-
-$$\text{unknown target function}$$
-$$ y = \mathcal{f}(\mathbf{x})$$     
-$$ | $$
-$$\text{training data}$$
-$$ (\mathbf{x}_{1}, y_{1}), (\mathbf{x}_{2}, y_{2}) ... (\mathbf{x}_{n}, y_{n}) $$    
-$$ | $$
-$$\text{hypothesis set} \quad \rightarrow \quad \text{learning algorithm} \qquad \qquad \qquad \qquad $$
-$$ \{ \mathcal{h}(\mathbf{x})\}  \qquad \qquad \qquad \qquad \mathcal{A} \qquad \qquad \qquad \qquad \qquad $$
-$$ | $$
-$$\text{final hypothesis}$$
-$$\mathcal{g}(\mathbf{x}) \to \mathcal{f}(\mathbf{x})$$
-
----
-
-
-# **Machine Learning Process**
-
-- *Frame*: Problem definition
-- *Acquire*: Data ingestion 
-- *Refine*: Data wrangling
-- *Transform*: Feature creation 
-- *Explore*: Feature selection 
-- *Model*: Model creation & assessment
-- *Insight*: Solution Insight
-- *Communicate*: Dashboard or Story
 
 ---
 
@@ -381,293 +328,32 @@ $$\mathcal{g}(\mathbf{x}) \to \mathcal{f}(\mathbf{x})$$
 
 # **Transform**
 
-Encodings
+**Encodings** e.g.
 - One Hot Encoding 
 - Label Encoding
 
-Feature Transformation
+**Feature Transformation** e.g.
 - Log Transform
 - Sqrt Transform
 
 ---
 
-# **Model - Linear Regression**
+# **Model Creation**
 
-**Parameters**
-- fit_intercept
-- normalization
+**Types of ML Model**
+- Linear
+- Tree-Based
+- Neural Network
 
-**Error Measure**
-- mean squared error
-
----
-
-
-# **Real-World Challenge - Noise**
-
-- The "target function" $$f$$ is not always a *function*
-- Not unique target value for same input
-- Need to add noise $$N(0,\sigma)$$
-
-$$ y = f(\mathbf{x}) + \epsilon(\mathbf{x}) $$
+**Choosing a Model**
+1. Interpretability
+2. Run-time
+3. Model complexity
+4. Scalability
 
 ---
 
-# **Noise Implication**
-
-The best model we can create will have an expected error of $$\sigma^2$$
-
-If Noise ($$\sigma$$) is large, that means feature set does not capture large enough factors in the underlying process
-    - Need to create **better features**
-    - Need to find **new features**
-
----
-
-# **When are we learning?**
-
-Learning is defined as $$g≈f$$, which happens when
-
-(1) Can we make $$E_{out}(g)$$ is close enough to $$E_{in}(g)$$?
-
-$$E_{out}(g)≈E_{in}(g)$$
-
-(1) Can we make $$E_{in}(g)$$ small enough?
-
-$$E_{in}(g)≈0$$
-
----
-
-# **ML Theory: Generalisation**
-
-![right 100%](img/generalisation_error.png)
-
-For Learning, $$E_{out}(g)≈E_{in}(g)$$
-
-To find the generalisation error, we need to split our data into training and test samples
-
-Given large $$N$$, the expected generalisation error should be zero
-
----
-
-# **ML Theory: Generalisation**
-
-For Learning, $$E_{in}(g)≈0$$
-
-**Complex Model**: Better chance of approximating $$f$$
-**Simple Model**: Better chance of generalising $$E_{out}$$
-
-Lets try by increasing the model complexity - More features through interaction effect
-
----
-
-# **ML Theory: Model Complexity**
-
-![90% original inline](img/simple_complex.png)
-
----
-
-![right 100%](img/bias_variance.png)
-# **ML Theory: Bias-Variance**
-
-For Learning, $$E_{in}(g)≈0$$
-
-Given large $$N$$, the expected error should be the bias
-
-- **Bias** are the simplifying assumptions made by a model to make the target function easier to learn.
-- **Variance** is the amount that the estimate of the target function will change if different training data was used.
-
----
-
-# **ML Theory: Bias-Variance Tradeoff**
-
-![inline](img/model_complexity.png)
-
----
-
-![right 100%](img/overfitting.png)
-
-# **ML Theory: Overfitting**
-
-- Simple Target Function
-- 5th data point - noisy
-- 4th order polynomial fit
-
-$$E_{in}=0$$, $$E_{out}$$ is large
-
-*Overfitting* - Fitting the data more than warranted, and hence **fitting the noise**
-
----
-
-# **ML Theory: Addressing Overfitting**
-
-$$E_{out}(h) = E_{in}(h) + \text{overfit penalty}$$
-
-- **Regularization**: Not letting the weights grow
-    - Ridge: add $$||w||^2$$ to error minimisation
-    - Lasso: add $$||w||$$ to error minimisation
-- **Validation**: Checking when we reach bottom point
-
----
-
-# **Regularization - Ridge**
-
-$$ Minimize \quad E_{in}(w) + \frac{\lambda}{N}||w||^2 $$
-
-![inline](img/regularization.png)
-
----
-
-![right 100%](img/validation.png)
-
-# **Validation** 
-
-Validation set: $$K$$
-Training set: $$N-K$$
-
-Rule of Thumb: $$N = \frac{K}{5}$$
-
-Note: The validation set is used for learning
-
----
-
-# **Cross Validation**
-
-Repeats the process 5-times
-
-![fit inline](img/cross_validation.png)
-
----
-
-![right 100%](img/model_selection.png)
-
-# **Model Selection**
-
-How to choose between competing model? 
-
-Choose the function $$g_{m}$$ with 
-lowest cross-validation error $$E_{m}$$
-
---- 
-
-# **Applied ML**
-- **Theory**: Formulation, Generalisation, Bias-Variance, Overfitting
-- **Paradigms**: Supervised - Regression
-- **Models**: Linear - OLS, Ridge, Lasso
-- **Methods**: Regularisation, Validation
-- **Process**: Frame, Acquire, Refine, Transform, Explore, Model 
-
-
----
-
-## **Classification Problem**
-
-*Context*: Loan Default
-
-*Customer Application*
-- **age**: age of the applicant
-- **income**: annual income of the applicant
-- **year**: no. of years of employment
-- **ownership**: type of house owned
-- **grade**: credit grade for the applicant
-- **amount**: loan amount given
-- **interest**: interest rate of loan
-
-*Question* - Who is likely to  **default**?
-
----
-
-# **Linear Models**
-
-$$ s = \sum_{i=1}^d w_{i} x_{i} $$
-
-
-![inline original](img/linear_models.png)
-
----
-
-# **Logit Function**
-
-### $$ \theta (s)={\frac {e^{s}}{e^{s}+1}}={\frac {1}{1+e^{-s}}}$$
-
-![inline](img/logistic-curve.png)
-
----
-
-# **Logistic Relationship**
-
-Find the $$ w_{i} $$ weights that best fit:
-$$ y=1 $$  if $$ \sum_{i=1}^d w_{i} x_{i} > 0$$
-$$ y=0$$, otherwise
-
-Follows:
-
-$$ \theta(y_i)={\frac {1}{1+e^{-(\sum_{i=1}^d w_{i} x_{i})}}} $$
-
----
-
-# **Error - Likelihood / Probabilities**
-
-Where, $$h(\mathbf{x}) =  \sum_{i=1}^d w_{i} x_{i} $$
-
-Minimise the **log-likelihood** values
-
-$$E(\mathbf{h}) = - \frac{1}{N} ln \left( \prod_{i=1}^N \theta (y_i h(\mathbf{x})) \right)$$
-
-
-
----
-
-# **Learning Algorithm - Logistic**
-
-- Logistic Regression algorithm aims to minimise $$ E_{in}(h)$$ 
-- **Iterative Method** -> Solves to give $$g(\mathbf{x})$$
-
-$$g(\mathbf{x}) = \hat{y} $$
-
-$$ E_{in}(g) = \frac{1}{N} \sum_{i=1}^N ln( 1 + e^{-y_i \hat{y_i}})$$
-
-
----
-
-# **Error Metric - Confusion Matrix**
-
-![inline](img/confusion_matrix2.png)
-
----
-
-# **Model Evaluation** 
-
-**Classification Metrics**
-
-![fit right](img/precision_recall.png)
-
-Recall (TPR) = TP / (TP + FN)
-<br>
-Precision = TP / (TP + FP)
-<br>
-Specificity (TNR) =  TN / (TN + FP)
-
----
-
-# **Model Evaluation**
-
-**Receiver Operating Characteristic Curve** 
-
-Plot of TPR vs FPR at different discrimination threshold
- 
-![100% right](img/roc-curves.png)
-
----
-
-# **Decision Tree**
-
-Example: Survivor on Titanic
-
-![right fit](img/tree_titanic.png)
-
----
-
-# **Decision Tree**
+# **Tree Based Models**
 
 - Easy to interpret
 - Little data preparation
@@ -678,21 +364,30 @@ Example: Survivor on Titanic
 
 ---
 
-# **Bagging**
+# **Ensemble Models**
+
+**Bagging**
 
 - Also called bootstrap aggregation, reduces variance
 - Uses decision trees and uses a model averaging approach
 
----
-
-# **Random Forest**
+**Random Forest**
 
 - Combines bagging idea and random selection of features.
 - Similar to decision trees are constructed – but at each split, a random subset of features is used. 
 
-![inline ](img/random_forest.png)
+---
+
+# **Model Selection**
+
+How to choose between competing model? 
+
+- Error Metric (Business Decision)
+- Hyper-Parameter Tuning
+- Cross-Validation
 
 ---
+
 
 > If you torture the data enough, it will confess.
 -- Ronald Case
@@ -709,13 +404,70 @@ Example: Survivor on Titanic
 
 ---
 
+# [fit] **Machine Learning as a Service**
 
-# **Applied ML**
-- **Theory**: Formulation, Generalisation, Bias-Variance, Overfitting
-- **Paradigms**: Supervised - Regression & Classification
-- **Models**: Linear Models, Tree Models
-- **Methods**: Regularisation, Validation, Aggregation
-- **Process**: Frame, Acquire, Refine, Transform, Explore, Model 
 
+<br>
+*Amit Kapoor*
+[amitkaps.com](http://amitkaps.com)
+
+<br>
+*Anand Chitpothu*
+[anandology.com](http://anandology.com)
+
+
+
+---
+
+# **ML Theory: Formulation**
+- **Features** $$\mathbf{x}$$ *(customer application)*
+- **Target** $$y$$ *(loan amount)*
+- **Target Function** $$\mathcal{f}: \mathcal{X} \to \mathcal{y}$$ (ideal formula)
+- **Data** $$ (\mathbf{x}_{1}, y_{1}), (\mathbf{x}_{2}, y_{2}) ... (\mathbf{x}_{n}, y_{n}) $$ *(historical records)*
+- **Final Hypothesis** $$\mathcal{g}: \mathcal{X} \to \mathcal{y}$$ (formula to use)
+- **Hypothesis Set** $$ \mathcal{H} $$ (all possible formulas)
+- **Learning Algorithm** $$\mathcal{A}$$ (how to learn the formula)
+
+
+---
+
+# **ML Theory: Formulation**
+
+$$\text{unknown target function}$$
+$$\mathcal{f}: \mathcal{X} \to \mathcal{y}$$     
+$$ | $$
+$$\text{training data}$$
+$$ (\mathbf{x}_{1}, y_{1}), (\mathbf{x}_{2}, y_{2}) ... (\mathbf{x}_{n}, y_{n}) $$    
+$$ | $$
+$$\text{hypothesis set} \quad \rightarrow \quad \text{learning algorithm} \qquad \qquad \qquad \qquad $$
+$$ \mathcal{H} \qquad  \qquad \qquad \qquad \qquad \mathcal{A} \qquad \qquad \qquad \qquad \qquad $$
+$$ | $$
+$$\text{final hypothesis}$$
+$$\mathcal{g} \to \mathcal{f}$$
+
+---
+
+# **ML Theory:  Learning Model**
+
+The Learning Model is composed of the two elements
+
+- The Hypothesis Set:  $$ \mathcal{H} = \{\mathcal{h}\} \qquad \mathcal{g} \in \mathcal{H} $$
+- Learning Algorithm: $$ \mathcal{A} $$ 
+
+---
+
+# **ML Theory: Formulation (Simplified)**
+
+$$\text{unknown target function}$$
+$$ y = \mathcal{f}(\mathbf{x})$$     
+$$ | $$
+$$\text{training data}$$
+$$ (\mathbf{x}_{1}, y_{1}), (\mathbf{x}_{2}, y_{2}) ... (\mathbf{x}_{n}, y_{n}) $$    
+$$ | $$
+$$\text{hypothesis set} \quad \rightarrow \quad \text{learning algorithm} \qquad \qquad \qquad \qquad $$
+$$ \{ \mathcal{h}(\mathbf{x})\}  \qquad \qquad \qquad \qquad \mathcal{A} \qquad \qquad \qquad \qquad \qquad $$
+$$ | $$
+$$\text{final hypothesis}$$
+$$\mathcal{g}(\mathbf{x}) \to \mathcal{f}(\mathbf{x})$$
 
 ---
