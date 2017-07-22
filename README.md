@@ -25,7 +25,7 @@ In this workshop, you would learn how to build a seamless end-to-end data driven
 
 An advanced version of the workshop, taught over two days, will cover the following additional topics
 
-1. Building data pipeline and models using `spark`   
+1. Building data pipeline and models  
 2. Deployment on cloud  
 3. Automate the workflow (eg: using `airflow`) 
 
