@@ -51,6 +51,7 @@ We will be using Python data stack for the workshop. Please install [Ananconda f
 Install the required packages using conda.
 
 	conda install numpy pandas matplotlib seaborn scikit-learn pydotplus flask flask-wtf
+  conda install -c ioam holoviews bokeh
 
 We'll also need a python library firefly-python that is not available as conda package. Install it using pip.
 
