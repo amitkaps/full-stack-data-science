@@ -2,15 +2,13 @@ theme: Olive Green, 8
 autoscale: true
 
 # [fit] **Machine Learning as a Service**
-
-
+## [fit] Learning the art of building data-driven products
 <br>
-*Amit Kapoor*
-[amitkaps.com](http://amitkaps.com)
-
+# *Workshop @ The Fifth Elephant 2017*
 <br>
-*Anand Chitpothu*
-[anandology.com](http://anandology.com)
+*Amit Kapoor*         [amitkaps.com](http://amitkaps.com) 
+*Anand Chitpothu*     [anandology.com](http://anandology.com)
+*Bargava Subramanian* [bargava.com](http://bargava.com)
 
 ---
 
@@ -21,11 +19,16 @@ autoscale: true
 
 ---
 
-# **Motivation**
+> **data scientist**: the people who are building products from data
 
-- Solve a business problem.
-- Understand the end-to-end process
-- Build a Machine Learning application
+---
+
+# **What is required to know?**
+
+- *Data Management* 
+- *Modelling & Prototyping*
+- *Product Design*  
+- *Data Engineering*
 
 ---
 
@@ -33,33 +36,107 @@ autoscale: true
 
 ---
 
+# **The Unicorn Skillset**
+
+- *Data Management*: data ingestion & wrangling
+- *Modelling & Prototyping*: statistics, visualisation, machine learning
+- *Product Design*: data narrative, dashboards, applications  
+- *Data Engineering*: data pipelines, cloud infrastructure
+
+---
+
+# **Motivation for the Workshop**
+
+- Solve a business problem.
+- Understand the end-to-end MLaaS approach
+- Build a data-driven ML application
+
+---
+
 # **Approach**
 
-- Simple approach
+- Simple and intuitive
 - Go wide vs. go deep
 - Practical and scalable 
+
+---
+
+# **Outline - Day 1** 
+
+*Session 1*: **Introduction and Concepts**
+- Approach for building ML products
+- Problem definition and dataset
+- Build your first ML Model (Part 1)
+
+*Session 2*: **Build a Simple ML Service**
+- Build your first ML Model (Part 2)
+- Concept of ML Service
+- Deploy your first ML Service - localhost API
+
+---
+
+# **Outline - Day 1 (contd.)** 
+
+*Session 3*: **Build & Evaluate ML Models**
+- Feature Engineering
+- Build your second ML model
+- ML model evaluation (metrics, validation)
+
+*Session 4*: **Practice Session**
+- Practice problem overview and data
+- Build your ML Model 
+- Build your API 
+
+---
+
+# **Outline - Day 2** 
+
+*Session 5*: **Build a Simple Dashboard**
+- Concept of Dashboard design
+- Create your first dashboard
+- Integrate ML model API with dashboard
+
+*Session 6*: **Deploy to cloud**
+- Get started with cloud server setup
+- Deploy your ML service as cloud API
+- Deploy your dashboard as cloud service
+
+---
+
+# **Outline - Day 2 (contd.)** 
+
+*Session 7*: **Repeatable ML as a Service**
+- Build data pipelines
+- Update model, API and dashboard
+- Schedule ML as as Service process
+
+*Session 8*: **Practice Session & Wrap-up**
+- Deploy on cloud - dashboard and API
+- Best practices and challenges in building ML service
+- Where to go from here
+
 
 ---
 
 
 # **Schedule**
 
-1. **Introduction, Setup** (10 mins)
-2. **ML Process, Frame** - *Conceptual* (20 mins)
-3. **Acquire, Refine, Explore** - *Coding* (30 mins)
-4. **Transform, Model** - *Coding* (40 mins)
- -- Break (15 mins)--
-5. **Building an ML Application** - *Conceptual* (10 mins)
-6. **Deploy the ML Model as Service** - *Coding* (20 mins)
-7. **Wiring the Model** - *Coding* (20 mins)
-8. **Wrap-up** (15 mins)
+08:45 to 09:30 : *Check-in & Breakfast*
+09:30 to 11:00 : **Session 1**
+11:00 to 11:20 : *Coffee break*
+11:20 to 13:00 : **Session 2**
+13:00 to 14:00 : *Lunch break*
+14:00 to 15:40 : **Session 3**
+15:40 to 16:00 : *Coffee break*
+16:00 to 17:10 : **Session 4**
 
 ---
 
-# **Data-Driven Lens**
+# **Data-Driven Learning**
 
-> "Data is a clue to the End Truth"
--- Josh Smith
+Two cases / dataset in the Workshop
+- Loan Default 
+- People Attrition 
 
 ---
 
@@ -260,6 +337,78 @@ Learning Paradigm: **Supervised**
 
 ---
 
+# **Simple MLaaS Example (1/4)**
+
+```python
+#Load the libraries and configuration
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+%matplotlib inline
+
+from sklearn import tree
+from sklearn.externals import joblib
+from firefly.client import Client
+```
+
+---
+
+# **Simple MLaaS Example (2/4)**
+
+```python
+#Frame - predict loan default probability
+
+#Acquire - load historical data
+df = pd.read_csv("../data/historical_loan.csv") 
+
+#Refine - drop NaN values
+df.dropna(axis=0, inplace=True) 
+
+#Transform - log scale
+df['log_age'] = np.log(df.age)
+df['log_income'] = np.log(df.income)
+```
+
+---
+
+# **Simple MLaaS Example (3/4)**
+
+```python
+#Model - build a tree classifier
+X = df.loc[:,('age', 'income')]
+y = df.loc[:,'default']
+clf = tree.DecisionTreeClassifier(max_depth=10).fit(X,y)
+joblib.dump(clf, "clf.pkl")
+
+#Build - the model API
+%%file simple.py
+import numpy as np
+from sklearn.externals import joblib
+model = joblib.load("clf.pkl")
+
+```
+
+---
+
+# **Simple MLaaS Example (4/4)**
+
+```python
+def predict(age, amount):
+    features = [age, amount]
+    prob0, prob1 = model.predict_proba([features])[0]
+    return prob0
+
+#Deploy - the ML API
+! firefly simple.predict
+
+#Interact - get predictions using API
+simple = Client("http://127.0.0.1:8000")
+simple.predict(age=28, amount=10000)
+```
+
+
+---
+
 # **Frame**
 
 **Variables**
@@ -405,69 +554,13 @@ How to choose between competing model?
 ---
 
 # [fit] **Machine Learning as a Service**
-
-
+## [fit] Learning the art of building data-driven products
 <br>
-*Amit Kapoor*
-[amitkaps.com](http://amitkaps.com)
-
+# *Workshop @ The Fifth Elephant 2017*
 <br>
-*Anand Chitpothu*
-[anandology.com](http://anandology.com)
+*Amit Kapoor*         [amitkaps.com](http://amitkaps.com) 
+*Anand Chitpothu*     [anandology.com](http://anandology.com)
+*Bargava Subramanian* [bargava.com](http://bargava.com)
 
 
 
----
-
-# **ML Theory: Formulation**
-- **Features** $$\mathbf{x}$$ *(customer application)*
-- **Target** $$y$$ *(loan amount)*
-- **Target Function** $$\mathcal{f}: \mathcal{X} \to \mathcal{y}$$ (ideal formula)
-- **Data** $$ (\mathbf{x}_{1}, y_{1}), (\mathbf{x}_{2}, y_{2}) ... (\mathbf{x}_{n}, y_{n}) $$ *(historical records)*
-- **Final Hypothesis** $$\mathcal{g}: \mathcal{X} \to \mathcal{y}$$ (formula to use)
-- **Hypothesis Set** $$ \mathcal{H} $$ (all possible formulas)
-- **Learning Algorithm** $$\mathcal{A}$$ (how to learn the formula)
-
-
----
-
-# **ML Theory: Formulation**
-
-$$\text{unknown target function}$$
-$$\mathcal{f}: \mathcal{X} \to \mathcal{y}$$     
-$$ | $$
-$$\text{training data}$$
-$$ (\mathbf{x}_{1}, y_{1}), (\mathbf{x}_{2}, y_{2}) ... (\mathbf{x}_{n}, y_{n}) $$    
-$$ | $$
-$$\text{hypothesis set} \quad \rightarrow \quad \text{learning algorithm} \qquad \qquad \qquad \qquad $$
-$$ \mathcal{H} \qquad  \qquad \qquad \qquad \qquad \mathcal{A} \qquad \qquad \qquad \qquad \qquad $$
-$$ | $$
-$$\text{final hypothesis}$$
-$$\mathcal{g} \to \mathcal{f}$$
-
----
-
-# **ML Theory:  Learning Model**
-
-The Learning Model is composed of the two elements
-
-- The Hypothesis Set:  $$ \mathcal{H} = \{\mathcal{h}\} \qquad \mathcal{g} \in \mathcal{H} $$
-- Learning Algorithm: $$ \mathcal{A} $$ 
-
----
-
-# **ML Theory: Formulation (Simplified)**
-
-$$\text{unknown target function}$$
-$$ y = \mathcal{f}(\mathbf{x})$$     
-$$ | $$
-$$\text{training data}$$
-$$ (\mathbf{x}_{1}, y_{1}), (\mathbf{x}_{2}, y_{2}) ... (\mathbf{x}_{n}, y_{n}) $$    
-$$ | $$
-$$\text{hypothesis set} \quad \rightarrow \quad \text{learning algorithm} \qquad \qquad \qquad \qquad $$
-$$ \{ \mathcal{h}(\mathbf{x})\}  \qquad \qquad \qquad \qquad \mathcal{A} \qquad \qquad \qquad \qquad \qquad $$
-$$ | $$
-$$\text{final hypothesis}$$
-$$\mathcal{g}(\mathbf{x}) \to \mathcal{f}(\mathbf{x})$$
-
----
