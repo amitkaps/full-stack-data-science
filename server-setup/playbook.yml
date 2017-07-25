@@ -1,0 +1,18 @@
+- name: Initial server setup
+  hosts: all
+  user: root
+  vars_files: 
+    - vars.yml
+  tasks:
+    - name: add user
+      user: name=ds password="{{password}}" state=present groups=sudo shell=/bin/bash
+
+    - name: enable password less sudo for users in sudo group
+      lineinfile: "dest=/etc/sudoers state=present regexp='^%sudo' line='%sudo ALL=(ALL:ALL) NOPASSWD:ALL'"
+
+    - name: Install apt packages for pip
+      apt: name="{{item}}"
+      with_items: "{{apt_packages}}"
+
+    - name: add anaconda3 to path
+      copy: src=files/anaconda.sh dest=/etc/profile.d
