@@ -63,12 +63,17 @@ class DigitalOcean:
 
     def create(self, name):
         logger.info("creating a new droplet with name %s ...", name)
+        manager = digitalocean.Manager(token=self.droplet_token)
+        ssh_keys = manager.get_all_sshkeys()
+        ssh_keys = [k.id for k in ssh_keys]
+
         droplet = digitalocean.Droplet(token=self.droplet_token,
                                        name=name,
                                        region=DEFAULT_REGION,
                                        image=DEFAULT_IMAGE,
                                        size_slug=DEFAULT_SIZE,
                                        user_data=USER_DATA,
+                                       ssh_keys=ssh_keys,
                                        backups=False)
         droplet.create()
 
