@@ -7,6 +7,11 @@
     - name: add user
       user: name=ds password="{{password}}" state=present groups=sudo shell=/bin/bash
 
+    - name: enable password authentication
+      lineinfile: "dest=/etc/ssh/sshd_config state=present regexp='^PasswordAuthentication' line='PasswordAuthentication yes'"
+      notify:
+         - restart ssh
+
     - name: enable password less sudo for users in sudo group
       lineinfile: "dest=/etc/sudoers state=present regexp='^%sudo' line='%sudo ALL=(ALL:ALL) NOPASSWD:ALL'"
 
@@ -30,5 +35,52 @@
         executable: /usr/local/anaconda3/bin/pip
       with_items: "{{python_packages}}"
 
-    - name: add anaconda3 to path
-      copy: src=files/anaconda.sh dest=/etc/profile.d
+    - name: Clone full-stack-data-science repository
+      git:
+        repo: https://github.com/amitkaps/full-stack-data-science.git
+        dest: /home/ds/full-stack-data-science
+      become: yes
+      become_user: ds
+
+    - name: copying system files
+      copy: src="files{{item}}" dest="{{item}}"
+      with_items: "{{files}}"
+      notify: restart supervisor
+
+    - name: Setup nginx default site
+      template:
+        src: templates/nginx-default-site.conf
+        dest: "/etc/nginx/conf.d/default.conf"
+        owner: root
+        group: root
+        force: yes
+        mode: 0644
+      notify: restart nginx
+
+    - name: Setup nginx sites
+      template:
+        src: templates/nginx-proxy-site.conf
+        dest: "/etc/nginx/conf.d/{{ item.site }}.conf"
+        owner: root
+        group: root
+        force: yes
+        mode: 0644
+      with_items:
+        - {site: "notebook", port: 8888}
+        - {site: "square", port: 8100}
+        - {site: "model0", port: 8200}
+        - {site: "model1", port: 8201}
+      notify: restart nginx
+
+  handlers:
+    - name: restart ssh
+      service: name=ssh state=restarted
+      listen: "restart ssh"
+
+    - name: restart nginx
+      service: name=nginx state=restarted
+      listen: "restart nginx"
+
+    - name: restart supervisor
+      service: name=supervisor state=restarted
+      listen: "restart supervisor"
