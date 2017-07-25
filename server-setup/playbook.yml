@@ -14,5 +14,15 @@
       apt: name="{{item}}"
       with_items: "{{apt_packages}}"
 
+    - name: download anaconda3 installer
+      get_url:
+        url: https://repo.continuum.io/archive/Anaconda3-4.4.0-Linux-x86_64.sh
+        dest: /tmp/Anaconda3-4.4.0-Linux-x86_64.sh
+
+    - name: Install anaconda3
+      command: bash /tmp/Anaconda3-4.4.0-Linux-x86_64.sh -b -p /usr/local/anaconda3
+      args:
+        creates: /usr/local/anaconda3
+
     - name: add anaconda3 to path
       copy: src=files/anaconda.sh dest=/etc/profile.d
