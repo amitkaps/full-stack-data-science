@@ -68,6 +68,7 @@
       with_items:
         - {site: "notebook", port: 8888}
         - {site: "square", port: 8100}
+        - {site: "unix", port: 8101}
         - {site: "model0", port: 8200}
         - {site: "model1", port: 8201}
       notify: restart nginx
