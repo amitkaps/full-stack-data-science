@@ -20,6 +20,7 @@ python_packages:
 
 files:
   - /etc/jupyter_notebook_config.py
-  - /etc/supervisor/conf.d/notebook.conf
+  - /etc/supervisor/conf.d/jupyter-notebook.conf
+  - /etc/supervisor/conf.d/firefly-unix.conf
   - /etc/profile.d/anaconda.sh
   - /var/www/index.html
