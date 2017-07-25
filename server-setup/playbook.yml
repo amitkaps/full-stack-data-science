@@ -10,7 +10,7 @@
     - name: enable password less sudo for users in sudo group
       lineinfile: "dest=/etc/sudoers state=present regexp='^%sudo' line='%sudo ALL=(ALL:ALL) NOPASSWD:ALL'"
 
-    - name: Install apt packages for pip
+    - name: Install apt packages
       apt: name="{{item}}"
       with_items: "{{apt_packages}}"
 

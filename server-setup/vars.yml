@@ -1,3 +1,4 @@
 password: $6$mk0xqF9YJO/Ldvhh$ckbpYq8n/sfZ2lIIIVUS8Z6HUsjfULNs./0Yqp265d7eXBguqFKfFcInu63DYXmfFrSyVgm.hUzGnAeaCwLOc0
 apt_packages:
   - supervisor
+  - nginx
