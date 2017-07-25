@@ -17,7 +17,7 @@ Use it using the client.
 
 	>>> import firefly
 	>>> unix = firefly.Client("http://127.0.0.1:8000/")	
-	>>> print(unix.cowsay("Firefly!"))
+	>>> print(unix.cowsay(message="Firefly!"))
 	 __________
 	< Firefly! >
 	 ----------
@@ -27,7 +27,8 @@ Use it using the client.
 	                ||----w |
 	                ||     ||
 
-	>>> print(unix.banner("Firefly"))
+
+	>>> print(unix.banner(message="Firefly"))
 	#######                                                   ###
 	#           #    #####   ######  ######  #        #   #   ###
 	#           #    #    #  #       #       #         # #    ###

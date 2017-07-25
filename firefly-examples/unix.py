@@ -25,6 +25,7 @@ def _cowsay(message, cowfile=None, cmdname='cowsay'):
     if cowfile:
         cmd.append("-f")
         cmd.append(cowfile)
+    cmd.append(message)
     output = subprocess.check_output(cmd)
     return output.decode('ascii', 'ignore')
 
