@@ -17,10 +17,11 @@ DEFAULT_IMAGE = 'ubuntu-16-04-x64'
 DEFAULT_REGION = 'BLR1'
 DEFAULT_SIZE = '512mb'
 DOMAIN_NAME = "pipal.in"
+SSH_KEY = ""
 
 USER_DATA = """\
 #!/bin/bash
-apt-get install python
+apt-get install -y python
 """
 
 def read_config():
