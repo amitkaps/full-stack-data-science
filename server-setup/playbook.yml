@@ -24,10 +24,11 @@
       args:
         creates: /usr/local/anaconda3
 
-    - name: Install firefly-python
+    - name: Install required python packages
       pip:
-        name: firefly-python
+        name: "{{item}}"
         executable: /usr/local/anaconda3/bin/pip
+      with_items: "{{python_packages}}"
 
     - name: add anaconda3 to path
       copy: src=files/anaconda.sh dest=/etc/profile.d

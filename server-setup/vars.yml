@@ -2,3 +2,12 @@ password: $6$mk0xqF9YJO/Ldvhh$ckbpYq8n/sfZ2lIIIVUS8Z6HUsjfULNs./0Yqp265d7eXBguqF
 apt_packages:
   - supervisor
   - nginx
+  - graphviz
+  # required for seaborn library to work
+  - libgl1-mesa-glx
+
+python_packages:
+    - firefly-python
+    - flask
+    - flask-WTF
+    - pydotplus
