@@ -1,0 +1,26 @@
+password: $6$mk0xqF9YJO/Ldvhh$ckbpYq8n/sfZ2lIIIVUS8Z6HUsjfULNs./0Yqp265d7eXBguqFKfFcInu63DYXmfFrSyVgm.hUzGnAeaCwLOc0
+apt_packages:
+  - supervisor
+  - nginx
+  - graphviz
+  # required for seaborn library to work
+  - libgl1-mesa-glx
+  # classic unix programs
+  - fortune-mod
+  - sysvbanner
+
+domain: pipal.in
+
+python_packages:
+    - firefly-python
+    - flask
+    - flask-WTF
+    - pydotplus
+    - gunicorn
+
+files:
+  - /etc/jupyter_notebook_config.py
+  - /etc/supervisor/conf.d/jupyter-notebook.conf
+  - /etc/supervisor/conf.d/firefly-unix.conf
+  - /etc/profile.d/anaconda.sh
+  - /var/www/index.html
