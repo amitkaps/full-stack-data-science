@@ -26,8 +26,8 @@ There are many resources on the web to continue to learn data science. What we a
 
 ## Other Books
 
-Introduction to Statistics - Hacker's approach: [Think Stats](http://greenteapress.com/thinkstats2/)
-Statistics - Theoretical Background: [All of Statistics](http://www.stat.cmu.edu/~larry/all-of-statistics/)
+Introduction to Statistics - Hacker's approach: [Think Stats](http://greenteapress.com/thinkstats2/)  
+Statistics - Theoretical Background: [All of Statistics](http://www.stat.cmu.edu/~larry/all-of-statistics/)   
 Statistics - Theoretical Background: [Statistics is Easy](http://www.amazon.com/Statistics-Edition-Synthesis-Lectures-Mathematics/dp/160845570X)
 
 
