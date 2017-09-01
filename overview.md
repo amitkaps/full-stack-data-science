@@ -4,7 +4,7 @@ autoscale: true
 # [fit] **Machine Learning as a Service**
 ## [fit] Learning the art of building data-driven products
 <br>
-# *Workshop @ The Fifth Elephant 2017*
+<br>
 <br>
 *Amit Kapoor*         [amitkaps.com](http://amitkaps.com) 
 *Anand Chitpothu*     [anandology.com](http://anandology.com)
@@ -556,7 +556,7 @@ How to choose between competing model?
 # [fit] **Machine Learning as a Service**
 ## [fit] Learning the art of building data-driven products
 <br>
-# *Workshop @ The Fifth Elephant 2017*
+<br>
 <br>
 *Amit Kapoor*         [amitkaps.com](http://amitkaps.com) 
 *Anand Chitpothu*     [anandology.com](http://anandology.com)
