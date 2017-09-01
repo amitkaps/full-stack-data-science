@@ -348,7 +348,7 @@ import matplotlib.pyplot as plt
 
 from sklearn import tree
 from sklearn.externals import joblib
-from firefly.client import Client
+import firefly
 ```
 
 ---
@@ -402,7 +402,7 @@ def predict(age, amount):
 ! firefly simple.predict
 
 #Interact - get predictions using API
-simple = Client("http://127.0.0.1:8000")
+simple = firefly.Client("http://127.0.0.1:8000")
 simple.predict(age=28, amount=10000)
 ```
 
