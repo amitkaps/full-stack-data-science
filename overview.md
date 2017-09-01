@@ -7,7 +7,7 @@ autoscale: true
 <br>
 <br>
 *Amit Kapoor*         [amitkaps.com](http://amitkaps.com) 
-*Anand Chitpothu*     [anandology.com](http://anandology.com)
+*Anand Chitipothu*    [anandology.com](http://anandology.com)
 *Bargava Subramanian* [bargava.com](http://bargava.com)
 
 ---
@@ -559,7 +559,7 @@ How to choose between competing model?
 <br>
 <br>
 *Amit Kapoor*         [amitkaps.com](http://amitkaps.com) 
-*Anand Chitpothu*     [anandology.com](http://anandology.com)
+*Anand Chitipothu*    [anandology.com](http://anandology.com)
 *Bargava Subramanian* [bargava.com](http://bargava.com)
 
 
