@@ -61,6 +61,21 @@ autoscale: true
 
 ---
 
+# **Schedule**
+
+<!-- 2 hours -->
+
+1. Introduction, Setup (5 mins)
+2. ML Process, Frame - Conceptual (10 mins)
+3. Acquire, Refine, Explore - Coding (20 mins)
+4. Transform, Model - Coding (25 mins)
+5. Building an ML Application - Conceptual (10 mins)
+6. Deploy the ML Model as Service - Coding (20 mins)
+7. Wiring the Model - Coding (20 mins)
+8. Wrap-up (10 mins)
+
+
+<!--
 # **Outline - Day 1** 
 
 *Session 1*: **Introduction and Concepts**
