@@ -13,7 +13,8 @@ Run any task using the task name.
     fab hello
 """
 
-from fabric.api import task, run, env, sudo, prompt, cd
+from fabric.api import task, run, env, sudo, prompt, cd, put
+import yaml
 
 ## Change this to IP address/hostname of your remote machine
 env.hosts = ['ds00.pipal.in']
@@ -24,12 +25,22 @@ env.user = 'root'
 # Set a password
 # env.password = open("password.txt").read().strip()
 
-ANACONDA_INSTALLER = "https://repo.continuum.io/archive/Anaconda3-4.4.0-Linux-x86_64.sh"
-REPO_URL = "https://github.com/amitkaps/full-stack-data-science.git"
+config = yaml.safe_load(open("project.yml"))
 
-SYSTEM_PACKAGES = [
-    "supervisor"
-]
+ANACONDA_INSTALLER = "https://repo.continuum.io/archive/Anaconda3-4.4.0-Linux-x86_64.sh"
+REPO_URL = config["repo"]
+
+SYSTEM_PACKAGES = config["system_packages"]
+
+SUPERVISOR_TEMPLATE ="""
+[program:{name}]
+command = {command}
+directory = {directory}
+redirect_stderr = true
+stdout_logfile = /var/log/supervisor/{name}.log
+"""
+
+SERVICES = config["services"]
 
 @task
 def hello():
@@ -62,6 +73,7 @@ def info():
     run("echo $PATH")
     run("python --version")
     run("ls")
+    run("supervisorctl status")
 
 @task
 def clone():
@@ -71,6 +83,19 @@ def clone():
 def deploy():
     with cd("/root/full-stack-data-science"):
         run("git pull")
+        setup_services()
+
+def setup_services():
+    config = ""
+    for s in SERVICES:
+        config += SUPERVISOR_TEMPLATE.format(**s)
+    print(config)
+
+    with open("datascience.conf", "w") as f:
+        f.write(config)
+
+    put("datascience.conf", "/etc/supervisor/conf.d/datascience.conf")
+    run("supervisorctl update")
 
 @task
 def train():
