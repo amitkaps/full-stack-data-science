@@ -14,5 +14,5 @@ services:
     directory: /root/full-stack-data-science/credit-risk
 
   - name: credit-risk-service
-    command: /usr/local/anaconda3/bin/firefly -b 0.0.0.0:7001 credit_risk_service.predict
+    command: /usr/local/anaconda3/bin/firefly -b 0.0.0.0:7002 credit_risk_service.predict
     directory: /root/full-stack-data-science/credit-risk    
