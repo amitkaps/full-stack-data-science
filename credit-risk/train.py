@@ -1,6 +1,11 @@
 #Load the libraries
 import numpy as np
 import pandas as pd
+
+# tell matplotlib not to use QT and other GUI libraries
+import matplotlib
+matplotlib.use("Agg")
+
 import matplotlib.pyplot as plt
 from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import LabelEncoder
