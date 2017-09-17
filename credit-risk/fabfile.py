@@ -40,15 +40,18 @@ def provision():
     install_anaconda()
 
 def install_anaconda():
-    run("wget -nv -O /tmp/anaconda-installer.sh " + ANACONDA_INSTALLER)
-    run("bash /tmp/anaconda-installer.sh -b -p /usr/local/anaconda3")
-    run("ln -s /usr/local/anaconda3/bin/python /usr/bin/")
+    #run("wget -nv -O /tmp/anaconda-installer.sh " + ANACONDA_INSTALLER)
+    #run("bash /tmp/anaconda-installer.sh -b -p /usr/local/anaconda3")
+
+    # Add anaconda3 to system path
+    run("echo 'export PATH=$PATH:/usr/local/anaconda3/bin' > /etc/profile.d/anaconda.sh")
 
 @task
 def info():
     run("date")
     run("w")
-    run("/usr/local/anaconda3/bin/python --version")
+    run("echo $PATH")
+    run("python --version")
     run("ls")
 
 @task
@@ -56,6 +59,21 @@ def clone():
     run("git clone " + REPO_URL)
 
 @task
+def deploy():
+    with cd("/root/full-stack-data-science"):
+        run("git pull")
+
+@task
+def train():
+    with cd("/root/full-stack-data-science/credit-risk"):
+        run("python train.py")
+
+@task
 def install_python_packages():
     with cd("/root/full-stack-data-science/credit-risk"):
         run("/usr/local/anaconda3/bin/pip install -r requirements.txt")
+
+@task
+def square_service():
+    with cd("/root/full-stack-data-science/firefly-examples"):
+        run("firefly sq.square -b 0.0.0.0:8000")
