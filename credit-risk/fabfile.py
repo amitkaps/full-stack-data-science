@@ -27,6 +27,10 @@ env.user = 'root'
 ANACONDA_INSTALLER = "https://repo.continuum.io/archive/Anaconda3-4.4.0-Linux-x86_64.sh"
 REPO_URL = "https://github.com/amitkaps/full-stack-data-science.git"
 
+SYSTEM_PACKAGES = [
+    "supervisor"
+]
+
 @task
 def hello():
     run("echo hello")
@@ -38,13 +42,18 @@ def ip():
 @task
 def provision():
     install_anaconda()
+    install_system_packages()
 
 def install_anaconda():
-    #run("wget -nv -O /tmp/anaconda-installer.sh " + ANACONDA_INSTALLER)
-    #run("bash /tmp/anaconda-installer.sh -b -p /usr/local/anaconda3")
+    run("wget -nv -O /tmp/anaconda-installer.sh " + ANACONDA_INSTALLER)
+    run("bash /tmp/anaconda-installer.sh -b -p /usr/local/anaconda3")
 
     # Add anaconda3 to system path
     run("echo 'export PATH=$PATH:/usr/local/anaconda3/bin' > /etc/profile.d/anaconda.sh")
+
+@task
+def install_system_packages():
+    run("apt-get install -y " + " ".join(SYSTEM_PACKAGES))
 
 @task
 def info():
