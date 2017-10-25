@@ -64,7 +64,8 @@ pip install firefly-python rorolite
 [anaconda]: https://www.continuum.io/downloads
 
 ## Facilitators’ Profile
-Anand Chitipothu is a software consultant and trainer based in Visakhapatnam. He has over 13 years of experience in architecting and developing variety of software applications. He is co-author of `web.py`, a micro web framework in Python. He has worked at Strand Life Sciences and Internet Archive. You can tweet him at [@anandology](https://twitter.com/anandology)
+
+Anand Chitipothu has been crafting beautiful software since a decade and half. He's now building a data science platform, [rorodata](http://rorodata.com/), which he recently co-founded. He regularly conducts advanced programming courses through Pipal Academy. He is co-author of *web.py*, a micro web framework in Python. He has worked at Strand Life Sciences and Internet Archive. You can tweet him at [@anandology](https://twitter.com/anandology).
 
 Amit Kapoor teaches the craft of telling visual stories with data. He conducts workshops and trainings on Data Science in Python and R, as well as on Data Visualisation topics. His background is in strategy consulting having worked with AT Kearney in India, then with Booz & Company in Europe and more recently for startups in Bangalore. He did his B.Tech in Mechanical Engineering from IIT, Delhi and PGDM (MBA) from IIM, Ahmedabad. You can find more about him at http://amitkaps.com/ and tweet him at [@amitkaps](https://twitter.com/amitkaps).
 
