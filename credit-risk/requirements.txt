@@ -7,3 +7,4 @@ firefly-python
 Flask
 Flask-WTF
 gunicorn
+rorolite

@@ -58,7 +58,7 @@ conda install -c ioam holoviews bokeh
 We'll also need a python library firefly-python that is not available as conda package. Install it using pip.
 
 ```
-pip install firefly-python
+pip install firefly-python rorolite
 ```
 
 [anaconda]: https://www.continuum.io/downloads
