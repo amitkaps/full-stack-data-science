@@ -1,4 +1,4 @@
-#Load the libraries
+import os
 import numpy as np
 import pandas as pd
 
@@ -11,30 +11,56 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import LabelEncoder
 from sklearn.externals import joblib
 
+# root directory to save models
+MODELS_DIR = "models"
+
+def encode_column(df, column):
+    """Encodes a column in the dataframe using LabelEncoder.
+
+    This functions creates a LabelEncoder, fits it using the given column and
+    also replaces that column in the data frame with a new column with encoded values.
+
+    Returns the created LabelEncoder object.
+
+    :param df: the data frame
+    :param column: the name of the column to encode
+    :return: returns the encoder object
+    """
+    encoder = LabelEncoder()
+    encoder.fit(df[column])
+    df[column] = encoder.transform(df[column])
+
+def save_model(model, filename):
+    """Saves the given model ine models directory with the
+    """
+    # create directory if not already present
+    os.makedirs(MODELS_DIR, exist_ok=True)
+    path = os.path.join(MODELS_DIR, filename)
+    joblib.dump(model, path)
+    print("  saved", path)
+
+
+print("reading the dataset...")
 df = pd.read_csv("data/historical_loan.csv")
 
-# Let's replace missing values with mean
-# There's a fillna function
+print("replacing missing values with mean...")
 df.years = df.years.fillna(np.mean(df.years))
 
-df_encoded = df.copy()
-le_grade = LabelEncoder()
-# fit label encoder
-le_grade = le_grade.fit(df.grade)
-df_encoded.grade = le_grade.transform(df_encoded.grade)
+print("encoding the columns...")
+grade_encoder = encode_column(df, "grade")
+ownership_encoder = encode_column(df, "ownership")
 
-le_ownership = LabelEncoder()
-le_ownership = le_ownership.fit(df["ownership"])
-df_encoded.ownership = le_ownership.transform(df_encoded.ownership)
+# build the model
+print("building the model...")
+X = df.iloc[:,1:]
+y = df.iloc[:,0]
+model = RandomForestClassifier(n_estimators=100)
+model.fit(X, y)
 
-
-X = df_encoded.iloc[:,1:]
-y = df_encoded.iloc[:,0]
-final_model = RandomForestClassifier(n_estimators=100)
-final_model = final_model.fit(X, y)
-
-joblib.dump(final_model, "model.pkl")
-joblib.dump(le_grade, "le_grade.pkl")
-joblib.dump(le_ownership, "le_ownership.pkl");
+# save the model and encoders
+print("saving the models...".format(MODELS_DIR))
+save_model(model, "model.pkl")
+save_model(grade_encoder, "grade-encoder.pkl")
+save_model(ownership_encoder, "ownership-encoder.pkl");
 
 print("done")
