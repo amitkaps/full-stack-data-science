@@ -5,7 +5,7 @@ This module manages saving the loans into files and reading them back.
 import datetime
 import pathlib
 import json
-from firefly.client import Client
+import firefly
 
 def get_loans():
     """Returns all the existing loans.
@@ -24,7 +24,9 @@ def save_loan(name, email, amount, duration, age, ownership, income):
     proba = predict_proba(
                 amount=amount, years=duration, age=age,
                 ownership=ownership, income=income, grade=grade)
-    timestamp = datetime.datetime.now().isoformat()
+
+    # timestamp = datetime.datetime.now().isoformat()
+    timestamp = datetime.datetime.now().isoformat().replace(":", "")
 
     loan = dict(
         name=name,

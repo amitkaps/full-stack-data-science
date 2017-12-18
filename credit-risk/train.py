@@ -29,6 +29,7 @@ def encode_column(df, column):
     encoder = LabelEncoder()
     encoder.fit(df[column])
     df[column] = encoder.transform(df[column])
+    return encoder
 
 def save_model(model, filename):
     """Saves the given model ine models directory with the
