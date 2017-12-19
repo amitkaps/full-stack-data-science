@@ -8,7 +8,7 @@ How to use:
 import os
 from sklearn.externals import joblib
 
-MODELS_DIR = "models"
+MODELS_DIR = "/volumes/data"
 
 def load_model(filename):
     path = os.path.join(MODELS_DIR, filename)
