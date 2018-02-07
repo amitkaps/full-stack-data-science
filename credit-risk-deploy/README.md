@@ -62,6 +62,8 @@ How to run remotely
 
 1. Open the rorolite.yml file and edit the `host` and `user` to match that of your server.
 
+2. Edit `config.py` and change the value of `MODELS_DIR` to `"/volumes/data"`.
+
 2. Provision your server if you have not already done.
 
 ```
@@ -79,8 +81,6 @@ $ rorolite deploy
 ```
 $ rorolite run python train.py
 ```
-
-Since the models are saved only in the current directory, they'll be wiped out on every deploy. Make sure you run train.py after every deploy. This issue can be fixed by changing the value of `MODELS_DIR` in `config.py` to `/volumes/data`.
 
 5. Restart the API after building the models.
 
