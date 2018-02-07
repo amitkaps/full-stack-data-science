@@ -3,4 +3,10 @@ to find the models path.
 """
 
 # root directory to save models
-MODELS_DIR = "."
+
+## for running locally
+MODELS_DIR = "models" 
+
+## for remote deploy
+# MODELS_DIR = "/volumes/data"
+
