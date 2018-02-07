@@ -1,0 +1,20 @@
+# Replace this with the IP address of your server
+host: "iris.do.rorodata.net"
+
+# Replace this with the username to login to the server
+user: anand
+
+services:
+    - name: api
+      function: predict.predict
+      port: 8000
+
+    # - name: webapp
+    #   command: gunicorn -b 0.0.0.0:8080 webapp:app
+    #   directory: webapp/
+    #   port: 8080
+
+####
+# Run:
+#     rorolite provision
+# to install required software.
