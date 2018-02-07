@@ -11,7 +11,7 @@ from sklearn.ensemble import RandomForestClassifier
 from sklearn.preprocessing import LabelEncoder
 from sklearn.externals import joblib
 
-from .config import MODELS_DIR
+from config import MODELS_DIR
 
 def encode_column(df, column):
     """Encodes a column in the dataframe using LabelEncoder.
@@ -28,6 +28,7 @@ def encode_column(df, column):
     encoder = LabelEncoder()
     encoder.fit(df[column])
     df[column] = encoder.transform(df[column])
+    return encoder
 
 def save_model(model, filename):
     """Saves the given model ine models directory with the

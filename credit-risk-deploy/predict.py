@@ -7,8 +7,7 @@ How to use:
 """
 import os
 from sklearn.externals import joblib
-
-MODELS_DIR = "."
+from config import MODELS_DIR
 
 def load_model(filename):
     path = os.path.join(MODELS_DIR, filename)
