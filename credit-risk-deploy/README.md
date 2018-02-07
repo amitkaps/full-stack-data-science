@@ -8,7 +8,9 @@ Here are the list of files in this directory:
 
 ```
 README.md -- this file
+config.py -- contains the MODELS_DIR config setting
 credit_grade.py -- finds the credit grade of a person given email
+data/ -- the data files
 predict.py -- the predict function, depends on model files
 rorolite.yml -- rorolite config file to deploy to your own server
 train.py -- script to train the ML model
@@ -18,8 +20,7 @@ webapp/ -- the webapp to request models
 How to run locally
 ------------------
 
-Before you start make sure you are in `deploy` directory.	
-
+Before you start make sure you are in `credit-risk-deploy` directory.
 
 1. Train the models
 
