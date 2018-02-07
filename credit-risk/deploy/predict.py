@@ -8,7 +8,7 @@ How to use:
 import os
 from sklearn.externals import joblib
 
-MODELS_DIR = "/volumes/data"
+MODELS_DIR = "."
 
 def load_model(filename):
     path = os.path.join(MODELS_DIR, filename)
@@ -34,17 +34,3 @@ def predict(amount, years, age, ownership, income, grade):
     # Again, wrapping in a list as a list of features is expected
     p0, p1 = model.predict_proba([features])[0]
     return p1
-
-def main():
-    p = predict(
-            amount=12345,
-            years=5,
-            age=28, 
-            ownership='RENT', 
-            income=50000,
-            grade='A')
-    print(p)
-
-if __name__ == "__main__":
-    main()
-

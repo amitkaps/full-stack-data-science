@@ -13,8 +13,3 @@ services:
     #   command: gunicorn -b 0.0.0.0:8080 webapp:app
     #   directory: webapp/
     #   port: 8080
-
-####
-# Run:
-#     rorolite provision
-# to install required software.
