@@ -9,9 +9,9 @@ For many of the participants, this was their first steps in to Machine Learning 
 - **Build a public profile** It could be a blog, a website, GitHub repos - so that people can see what you are doing and connect if they wish.
 - **Do projects that interest you**  You are more likely to stick through the long arduous journey of doing it. It could be in your work domain or it could be sports, economics, politics, public policy etc. 
 - **Understand your learning style** Are you the hacker kind, who learns best by finding out how things work or do you prefer the structured classroom style learning. This would help you identify better what works for you to learn new concepts.
-**Share what you do and get feedback** Put yourself out there. It may be a small project, a visualisation, an analysis, using a library, anything. Nothing is too small to share.
-**Find a community of like minded people**  Most of our learning happens through peers. Build or join a community of peers with whom you can engage, teach and learn. It could be virtual but even better if it is face to face.
-Find your own rhythm. Build and do something every day, week or month. Find your own cadence and start creating.
+- **Share what you do and get feedback** Put yourself out there. It may be a small project, a visualisation, an analysis, using a library, anything. Nothing is too small to share.
+- **Find a community of like minded people**  Most of our learning happens through peers. Build or join a community of peers with whom you can engage, teach and learn. It could be virtual but even better if it is face to face.
+- **Find your own rhythm**. Build and do something every day, week or month. Find your own cadence and start creating.
 
 
 There are many resources on the web to continue to learn data science. What we are listing here is a highly opinionated and limited take on material available.
